@@ -1,0 +1,9 @@
+{
+  "name": "trionbot",
+  "version": "1.0.0",
+  "description": "A Discord Bot",
+  "main": "index.js",
+  "repository": "git@github.com:PoetraRamadhan/TrionBot.git",
+  "author": "PoetraRamadhan",
+  "license": "MIT"
+}
