@@ -1,7 +1,7 @@
 module.exports = (client) => {
-    console.log(`${client.user.tag} Is Online.`);
+    console.log(`${client.user.tag} Is Online!`);
     function statusChanger() {
-        const status = ['Hello, I\'m Trion', 'Obey The Rules', 'Imma do a jump blub blub'];
+        const status = ['Hello, I\'m Trion', 'Obey The Rules', 'Imma do a jump blub blub', 'In Development'];
         const randomStatus = Math.floor(Math.random() * status.length);
         client.user.setActivity(status[randomStatus], { type: 'WATCHING' });
     };setInterval(statusChanger, 15000);

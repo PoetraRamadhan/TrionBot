@@ -5,5 +5,19 @@
   "main": "index.js",
   "repository": "git@github.com:PoetraRamadhan/TrionBot.git",
   "author": "PoetraRamadhan",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  },
+  "dependencies": {
+    "discord.js": "^12.5.1",
+    "discord.js-commando": "^0.12.2",
+    "dotenv": "^8.2.0",
+    "mongoose": "^5.11.15",
+    "pretty-ms": "^7.0.1"
+  }
 }
