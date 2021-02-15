@@ -8,6 +8,7 @@ module.exports = {
     aliases: ['pfp', 'av'],
     run: async (client, message, args) => {
         const user = message.mentions.users.first() || message.guild.members.cache.get(args[0]) || message.author;
+        if(!user) return message.channnel.send('Please provide a user');
         const member = message.guild.member(user);
 
         const avatarEmbed = new MessageEmbed()

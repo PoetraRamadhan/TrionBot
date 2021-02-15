@@ -32,7 +32,7 @@ module.exports.run = async (client, message) => {
     if(command.userPermissions) {
         let requiredPermissions = [];
 
-        commmand.userPermissions.forEach((permission) => {
+        command.userPermissions.forEach((permission) => {
             if(!message.member.hasPermission(permission)) requiredPermissions.push(permission);
         });
 
