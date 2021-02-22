@@ -1,6 +1,7 @@
 require('dotenv').config();
 
 const { Client, Collection } = require('discord.js');
+const Distube = require('distube');
 
 const client = new Client({
     disableMentions: 'everyone',
@@ -11,6 +12,14 @@ const client = new Client({
     ws: {
         intents: ['GUILDS', 'GUILD_MEMBERS', 'GUILD_MESSAGES', 'GUILD_EMOJIS', 'GUILD_VOICE_STATES', 'GUILD_PRESENCES'],
     }
+});
+
+client.distube = new Distube(client, {
+    searchSongs: true,
+    emitNewSongOnly: true,
+    leaveOnEmpty: true,
+    leaveOnFinish: false,
+    leaveOnStop: true
 });
 
 client.commands = new Collection();
