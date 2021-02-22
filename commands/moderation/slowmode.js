@@ -5,6 +5,7 @@ module.exports = {
     usage: 'slowmode <amount> <type>',
     clientPermissions: ['MANAGE_CHANNELS'],
     userPermissions: ['MANAGE_CHANNELS'],
+    cooldowns: 3,
     run: async (client, message, args) => {
         const timer = parseInt(args[0]);
         if(!timer) return message.channel.send('Please provide a timer');

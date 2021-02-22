@@ -6,6 +6,7 @@ module.exports = {
     aliases: ['purge', 'clean'],
     clientPermissions: ['MANAGE_MESSAGES'],
     userPermissions: ['MANAGE_MESSAGES'],
+    cooldowns: 3,
     run:  async (client, message, args) => {
         if(isNaN(args[0]) || parseInt(args[0]) <= 0) return message.channel.send('Please provide a real number.');
 

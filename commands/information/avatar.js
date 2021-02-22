@@ -6,6 +6,7 @@ module.exports = {
     category: 'information',
     usage: 'avatar [user]',
     aliases: ['pfp', 'av'],
+    cooldowns: 3,
     run: async (client, message, args) => {
         const user = message.mentions.users.first() || message.guild.members.cache.get(args[0]) || message.author;
         if(!user) return message.channnel.send('Please provide a user');

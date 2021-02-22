@@ -5,6 +5,7 @@ module.exports = {
     description: 'Shows the information of the server',
     category: 'information',
     usage: 'serverinfo',
+    cooldowns: 3,
     run: async (client, message, args) => {
         const serverEmbed = new MessageEmbed()
         .setAuthor(`${message.guild.name}\'s Information`, message.guild.iconURL())

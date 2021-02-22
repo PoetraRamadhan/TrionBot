@@ -1,3 +1,5 @@
+const { Collection } = require('discord.js');
+const { now } = require('mongoose');
 const { ownerId, prefix } = require('../../config.json');
 
 module.exports.run = async (client, message) => {
@@ -43,6 +45,24 @@ module.exports.run = async (client, message) => {
         if(message.author.id !== ownerId) return message.reply('Only the owner can execute this command.');
     }
 
-    // Run the command
-    command.run(client, message, args);
+    // Cooldowns
+    if(!client.cooldowns.has(command.name)) {
+        client.cooldowns.set(command.name, new Collection());
+    };
+
+    const currentDate = Date.now();
+    const timestamps = client.cooldowns.get(command.name);
+    const cooldownAmount = (command.cooldowns || 3) * 1000;
+
+    if(timestamps.has(message.author.id)) {
+        const timeout = timestamps.get(message.author.id) + cooldownAmount;
+
+        if(currentDate < timestamps) {
+            const timeLeft = (timeout - currentDate) / 1000;
+            return message.channel.send(`The command \`${command.name}\` is in a cooldown, you can do it again in \`${timeLeft.toFixed(1)} seconds\``)
+        }
+    } else command.run(client, message, args); // Run the command 
+
+    timestamps.set(message.author.id, currentDate);
+    setTimeout(() => timestamps.delete(message.author.id), cooldownAmount)
 }

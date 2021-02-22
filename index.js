@@ -1,7 +1,6 @@
 require('dotenv').config();
 
 const { Client, Collection } = require('discord.js');
-const Distube = require('distube');
 
 const client = new Client({
     disableMentions: 'everyone',
@@ -14,16 +13,9 @@ const client = new Client({
     }
 });
 
-client.distube = new Distube(client, {
-    searchSongs: true,
-    emitNewSongOnly: true,
-    leaveOnEmpty: true,
-    leaveOnFinish: false,
-    leaveOnStop: true
-});
-
 client.commands = new Collection();
 client.aliases = new Collection();
+client.cooldowns = new Collection();
 ['command', 'event'].forEach((handler) => {
     require(`./handlers/${handler}`)(client);
 });
